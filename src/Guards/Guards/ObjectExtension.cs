@@ -18,7 +18,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<T> Default<T>(in this Guard<T> @this) where T : struct
         {
-            return ref @this.Default((string) null);
+            return ref @this.Default(null);
         }
 
         /// <summary>
@@ -33,14 +33,10 @@ namespace Guards
         /// <exception cref="T:System.ArgumentNullException">
         ///     Thrown if the object is equal to its default value.
         /// </exception>
-        public static ref readonly Guard<T> Default<T>(
-            in this Guard<T> @this,
-            string detailMessage)
-            where T : struct
+        public static ref readonly Guard<T> Default<T>(in this Guard<T> @this, string detailMessage) where T : struct
         {
             if (!@this.ParameterArgument.Equals(default(T))) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be a default value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be a default value.";
             throw new ArgumentException(detailMessage, @this.ParameterName);
 
         }
@@ -57,7 +53,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<T> Null<T>(in this Guard<T> @this) where T : class
         {
-            return ref @this.Null((string) null);
+            return ref @this.Null(null);
         }
 
         /// <summary>
@@ -75,8 +71,7 @@ namespace Guards
         public static ref readonly Guard<T> Null<T>(in this Guard<T> @this, string detailMessage) where T : class
         {
             if (@this.ParameterArgument != null) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be a null reference.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be a null reference.";
             throw new ArgumentNullException(@this.ParameterName, detailMessage);
 
         }

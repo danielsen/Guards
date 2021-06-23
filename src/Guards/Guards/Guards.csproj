@@ -2,6 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Guards</Title>
+        <Authors>Dan Nielsen</Authors>
+        <Description>Simple parameter guards </Description>
+        <Copyright>2020 Dan Nielsen</Copyright>
+        <PackageProjectUrl>https://github.com/danielsen/Guards</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/danielsen/Guards/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/danielsen/Guards</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageVersion>1.1.0</PackageVersion>
     </PropertyGroup>
 
 </Project>

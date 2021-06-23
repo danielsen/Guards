@@ -18,9 +18,7 @@ namespace Guards
         ///     Thrown if the 64-bit integer is equal to the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> EqualTo(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> EqualTo(in this Guard<long> @this, in long comparandValue)
         {
             return ref @this.EqualTo(in comparandValue, null);
         }
@@ -39,16 +37,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is equal to the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> EqualTo(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> EqualTo(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument != comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be == to a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be == to a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -62,7 +56,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<long> Even(in this Guard<long> @this)
         {
-            return ref @this.Even((string) null);
+            return ref @this.Even(null);
         }
 
         /// <summary>
@@ -76,15 +70,11 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is an even value.
         /// </exception>
-        public static ref readonly Guard<long> Even(
-            in this Guard<long> @this,
-            string detailMessage)
+        public static ref readonly Guard<long> Even(in this Guard<long> @this, string detailMessage)
         {
             if ((@this.ParameterArgument & 1L) != 0L) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be an even value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be an even value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -99,11 +89,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is greater than the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> GreaterThan(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> GreaterThan(in this Guard<long> @this, in long comparandValue)
         {
-            return ref @this.GreaterThan(in comparandValue, (string) null);
+            return ref @this.GreaterThan(in comparandValue, null);
         }
 
         /// <summary>
@@ -120,16 +108,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is greater than the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> GreaterThan(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> GreaterThan(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument <= comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be > than a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be > than a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -144,11 +128,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is greater than or equal to the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> GreaterThanOrEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> GreaterThanOrEqualTo(in this Guard<long> @this, in long comparandValue)
         {
-            return ref @this.GreaterThanOrEqualTo(in comparandValue, (string) null);
+            return ref @this.GreaterThanOrEqualTo(in comparandValue, null);
         }
 
         /// <summary>
@@ -165,16 +147,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is greater than or equal to the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> GreaterThanOrEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> GreaterThanOrEqualTo(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument < comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be >= than a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be >= than a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -189,11 +167,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is less than the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> LessThan(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> LessThan(in this Guard<long> @this, in long comparandValue)
         {
-            return ref @this.LessThan(in comparandValue, (string) null);
+            return ref @this.LessThan(in comparandValue, null);
         }
 
         /// <summary>
@@ -210,16 +186,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is less than the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> LessThan(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> LessThan(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument >= comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be < than a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be < than a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -234,11 +206,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is less than or equal to the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> LessThanOrEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> LessThanOrEqualTo(in this Guard<long> @this, in long comparandValue)
         {
-            return ref @this.LessThanOrEqualTo(in comparandValue, (string) null);
+            return ref @this.LessThanOrEqualTo(in comparandValue, null);
         }
 
         /// <summary>
@@ -255,16 +225,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is less than or equal to the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> LessThanOrEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> LessThanOrEqualTo(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument > comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be <= than a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be <= than a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -279,11 +245,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is not equal to the comparand value.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> NotEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue)
+        public static ref readonly Guard<long> NotEqualTo(in this Guard<long> @this, in long comparandValue)
         {
-            return ref @this.NotEqualTo(in comparandValue, (string) null);
+            return ref @this.NotEqualTo(in comparandValue, null);
         }
 
         /// <summary>
@@ -300,16 +264,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is not equal to the comparand value.
         /// </exception>
-        public static ref readonly Guard<long> NotEqualTo(
-            in this Guard<long> @this,
-            in long comparandValue,
+        public static ref readonly Guard<long> NotEqualTo(in this Guard<long> @this, in long comparandValue,
             string detailMessage)
         {
             if (@this.ParameterArgument == comparandValue) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be != than a comparand value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be != than a comparand value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -323,7 +283,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<long> Odd(in this Guard<long> @this)
         {
-            return ref @this.Odd((string) null);
+            return ref @this.Odd(null);
         }
 
         /// <summary>
@@ -340,10 +300,8 @@ namespace Guards
         public static ref readonly Guard<long> Odd(in this Guard<long> @this, string detailMessage)
         {
             if ((@this.ParameterArgument & 1L) != 1L) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be an odd value.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be an odd value.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -356,11 +314,9 @@ namespace Guards
         ///     Thrown if the 64-bit integer is outside the set of values.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> Outside(
-            in this Guard<long> @this,
-            params long[] set)
+        public static ref readonly Guard<long> Outside(in this Guard<long> @this, params long[] set)
         {
-            return ref @this.Outside((string) null, set);
+            return ref @this.Outside(null, set);
         }
 
         /// <summary>
@@ -375,9 +331,7 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is outside the set of values.
         /// </exception>
-        public static ref readonly Guard<long> Outside(
-            in this Guard<long> @this,
-            string detailMessage,
+        public static ref readonly Guard<long> Outside(in this Guard<long> @this, string detailMessage,
             params long[] set)
         {
             var flag = false;
@@ -394,10 +348,8 @@ namespace Guards
             }
 
             if (!flag) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be outside a set of values.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be outside a set of values.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -411,12 +363,10 @@ namespace Guards
         ///     Thrown if the 64-bit integer is outside the exclusive range of the lower bound and the upper bound.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> OutsideExclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
+        public static ref readonly Guard<long> OutsideExclusiveRange(in this Guard<long> @this, in long lowerBound,
             in long upperBound)
         {
-            return ref @this.OutsideExclusiveRange(in lowerBound, in upperBound, (string) null);
+            return ref @this.OutsideExclusiveRange(in lowerBound, in upperBound, null);
         }
 
         /// <summary>
@@ -432,17 +382,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is outside the exclusive range of the lower bound and the upper bound.
         /// </exception>
-        public static ref readonly Guard<long> OutsideExclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
-            in long upperBound,
-            string detailMessage)
+        public static ref readonly Guard<long> OutsideExclusiveRange(in this Guard<long> @this, in long lowerBound,
+            in long upperBound, string detailMessage)
         {
             if (@this.ParameterArgument > lowerBound && @this.ParameterArgument < upperBound) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be outside an exclusive range.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be outside an exclusive range.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -456,12 +401,10 @@ namespace Guards
         ///     Thrown if the 64-bit integer is outside the inclusive range of the lower bound and the upper bound.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> OutsideInclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
+        public static ref readonly Guard<long> OutsideInclusiveRange(in this Guard<long> @this, in long lowerBound,
             in long upperBound)
         {
-            return ref @this.OutsideInclusiveRange(in lowerBound, in upperBound, (string) null);
+            return ref @this.OutsideInclusiveRange(in lowerBound, in upperBound, null);
         }
 
         /// <summary>
@@ -477,17 +420,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is outside the inclusive range of the lower bound and the upper bound.
         /// </exception>
-        public static ref readonly Guard<long> OutsideInclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
-            in long upperBound,
-            string detailMessage)
+        public static ref readonly Guard<long> OutsideInclusiveRange(in this Guard<long> @this, in long lowerBound,
+            in long upperBound, string detailMessage)
         {
             if (@this.ParameterArgument >= lowerBound && @this.ParameterArgument <= upperBound) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be outside an inclusive range.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be outside an inclusive range.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -502,7 +440,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<long> Within(in this Guard<long> @this, params long[] set)
         {
-            return ref @this.Within((string) null, set);
+            return ref @this.Within(null, set);
         }
 
         /// <summary>
@@ -517,17 +455,14 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is within the set of values.
         /// </exception>
-        public static ref readonly Guard<long> Within(
-            in this Guard<long> @this,
-            string detailMessage,
+        public static ref readonly Guard<long> Within(in this Guard<long> @this, string detailMessage,
             params long[] set)
         {
             for (var index = 0; index < set.Length; ++index)
             {
                 ref var local = ref set[index];
                 if (@this.ParameterArgument != local) continue;
-                if (detailMessage == null)
-                    detailMessage = $"A parameter ({@this.ParameterName}) cannot be within a set of values.";
+                detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be within a set of values.";
                 throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
             }
 
@@ -545,12 +480,10 @@ namespace Guards
         ///     Thrown if the 64-bit integer is within the exclusive range of the lower bound and the upper bound.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> WithinExclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
+        public static ref readonly Guard<long> WithinExclusiveRange(in this Guard<long> @this, in long lowerBound,
             in long upperBound)
         {
-            return ref @this.WithinExclusiveRange(in lowerBound, in upperBound, (string) null);
+            return ref @this.WithinExclusiveRange(in lowerBound, in upperBound, null);
         }
 
         /// <summary>
@@ -566,17 +499,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is within the exclusive range of the lower bound and the upper bound.
         /// </exception>
-        public static ref readonly Guard<long> WithinExclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
-            in long upperBound,
-            string detailMessage)
+        public static ref readonly Guard<long> WithinExclusiveRange(in this Guard<long> @this, in long lowerBound,
+            in long upperBound, string detailMessage)
         {
             if (@this.ParameterArgument <= lowerBound || @this.ParameterArgument >= upperBound) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be within an exclusive range.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be within an exclusive range.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
 
         /// <summary>
@@ -590,12 +518,10 @@ namespace Guards
         ///     Thrown if the 64-bit integer is within the inclusive range of the lower bound and the upper bound.
         /// </exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ref readonly Guard<long> WithinInclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
+        public static ref readonly Guard<long> WithinInclusiveRange(in this Guard<long> @this, in long lowerBound,
             in long upperBound)
         {
-            return ref @this.WithinInclusiveRange(in lowerBound, in upperBound, (string) null);
+            return ref @this.WithinInclusiveRange(in lowerBound, in upperBound, null);
         }
 
         /// <summary>
@@ -611,17 +537,12 @@ namespace Guards
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///     Thrown if the 64-bit integer is within the inclusive range of the lower bound and the upper bound.
         /// </exception>
-        public static ref readonly Guard<long> WithinInclusiveRange(
-            in this Guard<long> @this,
-            in long lowerBound,
-            in long upperBound,
-            string detailMessage)
+        public static ref readonly Guard<long> WithinInclusiveRange(in this Guard<long> @this, in long lowerBound,
+            in long upperBound, string detailMessage)
         {
             if (@this.ParameterArgument < lowerBound || @this.ParameterArgument > upperBound) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be within an inclusive range.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be within an inclusive range.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
-
         }
     }
 }

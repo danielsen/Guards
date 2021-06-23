@@ -19,7 +19,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<DateTime> IsInFuture(in this Guard<DateTime> @this)
         {
-            return ref @this.IsInFuture((string) null);
+            return ref @this.IsInFuture(null);
         }
 
         /// <summary>
@@ -36,8 +36,7 @@ namespace Guards
         public static ref readonly Guard<DateTime> IsInFuture(in this Guard<DateTime> @this, string detailMessage)
         {
             if (@this.ParameterArgument < DateTime.Now) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be in the past.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be in the past.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
         }
 
@@ -52,7 +51,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<DateTime> IsInFutureUtc(in this Guard<DateTime> @this)
         {
-            return ref @this.IsInFuture((string) null);
+            return ref @this.IsInFuture(null);
         }
 
         /// <summary>
@@ -70,8 +69,7 @@ namespace Guards
         {
             var utcTime = @this.ParameterArgument.ToUniversalTime();
             if (utcTime < DateTime.UtcNow) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be in the past.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be in the past.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
         }
 
@@ -86,7 +84,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<DateTime> IsInPast(in this Guard<DateTime> @this)
         {
-            return ref @this.IsInPast((string) null);
+            return ref @this.IsInPast(null);
         }
 
         /// <summary>
@@ -103,8 +101,7 @@ namespace Guards
         public static ref readonly Guard<DateTime> IsInPast(in this Guard<DateTime> @this, string detailMessage)
         {
             if (@this.ParameterArgument > DateTime.Now) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be in the past.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be in the past.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
         }
 
@@ -119,7 +116,7 @@ namespace Guards
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static ref readonly Guard<DateTime> IsInPastUtc(in this Guard<DateTime> @this)
         {
-            return ref @this.IsInPastUtc((string) null);
+            return ref @this.IsInPastUtc(null);
         }
 
         /// <summary>
@@ -137,8 +134,7 @@ namespace Guards
         {
             var utcTime = @this.ParameterArgument.ToUniversalTime();
             if (utcTime > DateTime.UtcNow) return ref @this;
-            if (detailMessage == null)
-                detailMessage = $"A parameter ({@this.ParameterName}) cannot be in the past.";
+            detailMessage ??= $"A parameter ({@this.ParameterName}) cannot be in the past.";
             throw new ArgumentOutOfRangeException(@this.ParameterName, detailMessage);
         }
     }
